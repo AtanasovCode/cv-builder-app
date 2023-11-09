@@ -39,5 +39,4 @@ const Container = styled.div`
   display: flex;
   min-height: 100vh;
   background-color: ${props => props.theme.accent};
-  padding: 1rem;
 `;

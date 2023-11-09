@@ -3,7 +3,6 @@ import styled from "styled-components";
 const CV = () => {
     return (
         <Paper>
-
         </Paper>
     )
 }
@@ -18,15 +17,5 @@ const Paper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    margin: 1.5rem 3rem;
 `;
-
-// const Paper = styled.div`
-//     background-color: #fff;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-start;
-//     justify-content: flex-start;
-//     padding: 1rem;
-//     width: 100%;
-//     height: 100%;
-// `;
