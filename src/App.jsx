@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, createContext, } from 'react'
 import { GlobalStyle } from './GlobalStyle'
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
@@ -21,12 +21,82 @@ const theme = {
 
 function App() {
 
+  //Personal information
+  const [cvData, setCvData] = useState({
+    personalInfo: {
+      fullName: "Sheldon Lee Cooper",
+      profession: "Theoretical Physicist",
+      email: "sheldon.cooper@caltech.edu",
+      phoneNumber: "+1 (555) 987-6543",
+    },
+    education: [
+      {
+        institution: "California Institute of Technology (Caltech)",
+        degree: "Ph.D. in Theoretical Physics",
+        graduationYear: 2003,
+      },
+    ],
+    workExperience: [
+      {
+        position: "Senior Theoretical Physicist",
+        company: "Caltech",
+        startDate: "2003",
+        endDate: "Present",
+        responsibilities: [
+          "Conducting groundbreaking research in theoretical physics",
+        ],
+      },
+      // Add more work experience entries as needed
+    ],
+  });
+
+  const updatePersonalInfo = (field, value) => {
+    setCvData({
+      ...cvData,
+      personalInfo: {
+        ...cvData.personalInfo,
+        [field]: value,
+      },
+    });
+  };
+
+  const updateEducation = (index, field, value) => {
+    const updatedEducation = [...cvData.education];
+    updatedEducation[index] = {
+      ...updatedEducation[index],
+      [field]: value,
+    };
+    setCvData({
+      ...cvData,
+      education: updatedEducation,
+    });
+  };
+
+  const updateWorkExperience = (index, field, value) => {
+    const updatedWorkExperience = [...cvData.workExperience];
+    updatedWorkExperience[index] = {
+      ...updatedWorkExperience[index],
+      [field]: value,
+    };
+    setCvData({
+      ...cvData,
+      workExperience: updatedWorkExperience,
+    });
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <GlobalStyle />
-        <Editor />
-        <CV />
+        <Editor
+          cvData={cvData}
+          updatePersonalInfo={updatePersonalInfo}
+          updateEducation={updateEducation}
+          updateWorkExperience={updateWorkExperience}
+        />
+        <CV
+          cvData={cvData}
+        />
       </Container>
     </ThemeProvider>
   )
