@@ -11,9 +11,9 @@ const ColorChange = ({
 }) => {
 
     const [colors, setColors] = useState([
-        "#007BFF",  // Bright blue
-        "#FF4500",  // Orange-Red
-        "#4CAF50"   // Green
+        "#004895",  
+        "#b32100", 
+        "#148400"  
     ]);
 
 

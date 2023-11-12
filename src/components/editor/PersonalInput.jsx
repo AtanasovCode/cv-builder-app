@@ -78,7 +78,8 @@ const Input = styled.input`
     color: ${props => props.theme.text};
     border-radius: 10px; 
     background-color: transparent;
-    border: 1px solid ${props => props.theme.accent};
+    border: 1px solid ${props => props.theme.primary};
+    border-radius: 6px;
     margin-bottom: 1rem;
 
     &:focus {

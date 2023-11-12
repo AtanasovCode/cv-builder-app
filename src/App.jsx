@@ -11,11 +11,26 @@ import CV from './components/cv/CV';
 function App() {
 
   const [theme, setTheme] = useState({
-    text: '#fef9ec',
-    background: '#080016',
-    primary: '#a801c6',
-    secondary: '#2e4700',
-    accent: '#38fe16',
+    // text: '#fef9ec',
+    // background: '#050a09',
+    // primary: '#a801c6',
+    // secondary: '#2e4700',
+    // accent: '#38fe16',
+
+    // text: "#fbfdfe",
+    // background: "#061a28",
+    // primary: "#1c2cba",
+    // secondary: "#0d041b",
+    // accent: "#641ecc",
+
+    text: "#1a1919",
+    background: "#ffffff",
+    primary: "#273cff",
+    secondary: "#2a006d",
+    accent: "#893aff",
+
+
+    //used for top part of CV
     cv: "#007BFF",
 
     font: 'Lato',
@@ -117,5 +132,5 @@ export default App
 const Container = styled.div`
   display: flex;
   min-height: 100vh;
-  background-color: ${props => props.theme.accent};
+  background-color: #222;
 `;

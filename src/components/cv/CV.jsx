@@ -36,7 +36,8 @@ export default CV;
 
 const Paper = styled.div`
     flex: 100%;
-    background-color: ${props => props.theme.text};
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
@@ -47,7 +48,7 @@ const Paper = styled.div`
 
 const PersonalInfoContainer = styled.div`
     background-color: ${props => props.theme.cv};
-    color: #111;
+    color: #fff;
     width: 100%;
     padding: 2rem;
     transition: background .6s ease;
@@ -79,4 +80,5 @@ const Phone = styled(Mail)``;
 const Icon = styled.img`
     width: 1.3rem;
     margin-right: .5rem;
+    filter: invert(100%);
 `;

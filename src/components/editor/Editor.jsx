@@ -34,9 +34,10 @@ const Editor = ({
 export default Editor;
 
 const Container = styled.div`
-    flex: 60%;
+    flex: 40%;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
+    border-right: 1px solid #dddddd50;
 `;
 
 const InputContainer = styled.div`

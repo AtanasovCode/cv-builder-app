@@ -20,15 +20,15 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 `;
 
 const Title = styled.div`
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     margin-left: 1rem;
 `;
 
 const CategoryIcon = styled.img`
-    height: 2rem;
+    width: 2rem;
 `;
