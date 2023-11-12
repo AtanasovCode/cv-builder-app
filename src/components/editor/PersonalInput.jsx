@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import personalIcon from '../assets/user.png';
+import personalIcon from '../../assets/user.svg';
+import Heading from "./Heading";
 
 
 const PersonalInput = ({
@@ -13,10 +14,10 @@ const PersonalInput = ({
 
     return (
         <Category>
-            <Heading>
-                <CategoryIcon src={personalIcon} />
-                <Title>Personal Information</Title>
-            </Heading>
+            <Heading 
+                icon={personalIcon}
+                text="Personal Information"
+            />
 
             <Label>Full Name</Label>
             <Input
@@ -60,33 +61,14 @@ export default PersonalInput;
 const Category = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
-`;
-
-const Heading = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 1.5rem 0;
-`;
-
-const Title = styled.div`
-    font-size: 24px;
-    font-weight: 700;
-    margin-left: 1rem;
-`;
-
-const CategoryIcon = styled.img`
-    width: 2rem;
-    height: 2rem;
-    filter: invert(100%);
+    margin-bottom: .5rem;
 `;
 
 
 const Label = styled.label`
     font-size: 16px;
     color: ${props => props.theme.text};
-    margin-bottom: .5rem;
+    margin-bottom: .3rem;
 `;
 
 const Input = styled.input`
@@ -97,7 +79,7 @@ const Input = styled.input`
     border-radius: 10px; 
     background-color: transparent;
     border: 1px solid ${props => props.theme.accent};
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
     &:focus {
         border: 1px solid ${props => props.theme.primary};

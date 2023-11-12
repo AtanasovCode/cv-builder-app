@@ -3,18 +3,23 @@ import styled from "styled-components";
 
 import Nav from "./Nav";
 import PersonalInput from "./PersonalInput";
+import ColorChange from "./ColorChange";
 
 const Editor = ({
+    handleThemeChange,
     cvData,
     updatePersonalInfo,
     updateEducation,
     updateWorkExperience,
 }) => {
+
     return (
         <Container>
             <Nav />
 
             <InputContainer>
+                <ColorChange handleThemeChange={handleThemeChange} />
+
                 <PersonalInput
                     cvData={cvData}
                     updatePersonalInfo={updatePersonalInfo}
@@ -37,7 +42,7 @@ const Container = styled.div`
 const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
     padding: 2rem;
 `;
