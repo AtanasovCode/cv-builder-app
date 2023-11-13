@@ -1,12 +1,11 @@
-import { useState, createContext, } from 'react'
+import { useState } from 'react'
 import { GlobalStyle } from './GlobalStyle'
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 
 //importing components
 import Editor from './components/editor/Editor';
-import CV from './components/cv/CV';
-
+import CV from './components/CV/CV';
 
 function App() {
 
@@ -49,18 +48,17 @@ function App() {
       {
         institution: "California Institute of Technology (Caltech)",
         degree: "Ph.D. in Theoretical Physics",
-        graduationYear: 2003,
+        start: 2000,
+        graduation: 2003,
       },
     ],
     workExperience: [
       {
         position: "Senior Theoretical Physicist",
         company: "Caltech",
-        startDate: "2003",
-        endDate: "Present",
-        responsibilities: [
-          "Conducting groundbreaking research in theoretical physics",
-        ],
+        startYear: "2003",
+        endYear: "Present",
+        responsibilities: "Conducting groundbreaking research in theoretical physics",
       },
       // Add more work experience entries as needed
     ],

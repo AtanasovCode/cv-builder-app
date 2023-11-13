@@ -28,7 +28,7 @@ const ColorChange = ({
                 {
                     colors.map((color) => {
                         return (
-                            <Color color={color} onClick={() => handleThemeChange("cv", color)} />
+                            <Color key={color} color={color} onClick={() => handleThemeChange("cv", color)} />
                         );
                     })
                 }

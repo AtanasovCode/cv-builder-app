@@ -66,20 +66,20 @@ const PersonalInput = ({
 export default PersonalInput;
 
 
-const Category = styled.div`
+export const Category = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: .5rem;
 `;
 
 
-const Label = styled.label`
+export const Label = styled.label`
     font-size: 16px;
     color: ${props => props.theme.text};
     margin-bottom: .3rem;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
     width: 100%;
     padding: .5rem;
     font-size: 16px;

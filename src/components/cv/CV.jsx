@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import styled from "styled-components";
 
 //importing icons
@@ -11,8 +12,20 @@ const CV = ({
 
     const { fullName, profession, email, phoneNumber, location } = cvData.personalInfo;
 
+    const cvRef = useRef();
+
+    const handleScroll = (e) => {
+        const delta = e.deltaY;
+        cvRef.current.scrollTop += delta;
+        console.log(delta);
+    };
+
     return (
-        <Paper>
+        <Paper
+            onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
+            onMouseLeave={() => window.removeEventListener('wheel', handleScroll)}
+            ref={cvRef}
+        >
             <PersonalInfoContainer>
                 <Profession>
                     {profession}
@@ -40,10 +53,12 @@ const CV = ({
 export default CV;
 
 const Paper = styled.div`
+    height: calc(100vh - 3rem);
+    overflow: hidden;
     flex: 100%;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,3 +103,9 @@ const Icon = styled.img`
     width: 1.3rem;
     margin-right: .5rem;
 `;
+
+const ExperienceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
