@@ -22,7 +22,7 @@ const PersonalInput = ({
             <Label>Full Name</Label>
             <Input
                 type="text"
-                placeholder="John Doe"
+                placeholder="Enter your full name"
                 value={fullName}
                 onChange={(e) => updatePersonalInfo("fullName", e.target.value)}
             />

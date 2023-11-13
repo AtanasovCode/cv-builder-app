@@ -16,11 +16,33 @@ const Editor = ({
 }) => {
 
     const editorRef = useRef();
+    let animationFrameId;
+
+    const smoothScroll = (start, end, duration) => {
+        const startTime = performance.now();
+        const animateScroll = (timestamp) => {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const scrollTop = start + (end - start) * progress;
+
+            editorRef.current.scrollTop = scrollTop;
+
+            if (progress < 1) {
+                animationFrameId = requestAnimationFrame(animateScroll);
+            }
+        };
+
+        animateScroll(startTime);
+    };
 
     const handleScroll = (e) => {
-
         const delta = e.deltaY;
-        editorRef.current.scrollTop += delta;
+        cancelAnimationFrame(animationFrameId);
+
+        const startScrollTop = editorRef.current.scrollTop;
+        const endScrollTop = startScrollTop + delta * 0.65;
+
+        smoothScroll(startScrollTop, endScrollTop, 300); // 300ms duration
     };
 
     return (

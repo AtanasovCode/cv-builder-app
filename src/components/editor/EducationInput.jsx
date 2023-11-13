@@ -10,7 +10,7 @@ const EducationInput = ({
     updateEducation,
 }) => {
 
-    const { institution, degree, start, graduation } = cvData.education;
+    const { institution, degree, start, graduation } = cvData.education[0];
 
     return (
         <Styled.Category>
@@ -20,7 +20,7 @@ const EducationInput = ({
             />
 
             <Styled.Label>
-                "Institution Name"
+                Institution Name
             </Styled.Label>
             <Styled.Input
                 type="text"
