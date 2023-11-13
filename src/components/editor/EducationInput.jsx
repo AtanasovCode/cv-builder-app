@@ -8,6 +8,7 @@ import educationIcon from '../../assets/education.svg';
 const EducationInput = ({
     cvData,
     updateEducation,
+    currentTheme,
 }) => {
 
     const { institution, degree, start, graduation } = cvData.education[0];
@@ -17,6 +18,7 @@ const EducationInput = ({
             <Heading
                 icon={educationIcon}
                 text={"Education"}
+                currentTheme={currentTheme}
             />
 
             <Styled.Label>

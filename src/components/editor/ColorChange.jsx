@@ -7,7 +7,7 @@ import colorIcon from '../../assets/color.svg';
 
 
 const ColorChange = ({
-    handleThemeChange,
+    handleThemeValueChange,
 }) => {
 
     const [colors, setColors] = useState([
@@ -28,7 +28,7 @@ const ColorChange = ({
                 {
                     colors.map((color) => {
                         return (
-                            <Color key={color} color={color} onClick={() => handleThemeChange("cv", color)} />
+                            <Color key={color} color={color} onClick={() => handleThemeValueChange("cv", color)} />
                         );
                     })
                 }

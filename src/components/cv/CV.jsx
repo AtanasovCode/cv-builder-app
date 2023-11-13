@@ -56,8 +56,8 @@ const Paper = styled.div`
     height: calc(100vh - 3rem);
     overflow: hidden;
     flex: 100%;
-    background-color: ${props => props.theme.background};
-    color: ${props => props.theme.text};
+    background-color: #fff;
+    color: #000;
     /* margin-left: 1rem; */
     display: flex;
     flex-direction: column;

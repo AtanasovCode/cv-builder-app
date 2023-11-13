@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-const Nav = () => {
+import Toggle from "./Toggle";
+
+const Nav = ({
+    toggleTheme,
+    currentTheme,
+}) => {
     return (
         <Navigation>
             <Logo>CV <LogoFancy>Builds</LogoFancy></Logo>
+            <Toggle toggleTheme={toggleTheme} currentTheme={currentTheme} />
         </Navigation>
     );
 }
@@ -13,9 +19,9 @@ export default Nav;
 const Navigation = styled.nav`
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1rem;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1.25rem;
     border-bottom: 1px solid ${props => props.theme.accent};
 `;
 

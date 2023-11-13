@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 const Heading = ({
     icon,
-    text
+    text,
+    currentTheme,
 }) => {
 
     return (
         <Container>
-            <CategoryIcon src={icon} />
+            <CategoryIcon src={icon} theme={currentTheme} />
             <Title>{text}</Title>
         </Container>
     );
@@ -31,4 +32,7 @@ const Title = styled.div`
 
 const CategoryIcon = styled.img`
     width: 2rem;
+    ${props => props.theme === "dark" && `
+        filter: invert(100%);
+    `}
 `;

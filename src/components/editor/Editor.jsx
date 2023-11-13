@@ -8,7 +8,9 @@ import EducationInput from "./EducationInput";
 import ColorChange from "./ColorChange";
 
 const Editor = ({
-    handleThemeChange,
+    toggleTheme,
+    currentTheme,
+    handleThemeValueChange,
     cvData,
     updatePersonalInfo,
     updateEducation,
@@ -17,6 +19,7 @@ const Editor = ({
 
     const editorRef = useRef();
     let animationFrameId;
+
 
     const smoothScroll = (start, end, duration) => {
         const startTime = performance.now();
@@ -40,7 +43,7 @@ const Editor = ({
         cancelAnimationFrame(animationFrameId);
 
         const startScrollTop = editorRef.current.scrollTop;
-        const endScrollTop = startScrollTop + delta * 0.65;
+        const endScrollTop = startScrollTop + delta * 1.1;
 
         smoothScroll(startScrollTop, endScrollTop, 300); // 300ms duration
     };
@@ -51,19 +54,21 @@ const Editor = ({
             onMouseLeave={() => window.removeEventListener('wheel', handleScroll)}
             ref={editorRef}
         >
-            <Nav />
+            <Nav toggleTheme={toggleTheme} currentTheme={currentTheme} />
 
             <InputContainer>
-                <ColorChange handleThemeChange={handleThemeChange} />
+                <ColorChange handleThemeValueChange={handleThemeValueChange} />
 
                 <PersonalInput
                     cvData={cvData}
                     updatePersonalInfo={updatePersonalInfo}
+                    currentTheme={currentTheme}
                 />
 
                 <EducationInput
                     cvData={cvData}
                     updateEducation={updateEducation}
+                    currentTheme={currentTheme}
                 />
             </InputContainer>
         </Container>
@@ -78,7 +83,8 @@ const Container = styled.div`
     overflow: hidden;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
-    border-right: 1px solid #33333350;
+    border-right: 1px solid ${props => props.theme.accent};
+    transition: background .5s ease;
 `;
 
 const InputContainer = styled.div`

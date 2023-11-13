@@ -8,6 +8,7 @@ import Heading from "./Heading";
 const PersonalInput = ({
     cvData,
     updatePersonalInfo,
+    currentTheme,
 }) => {
 
     const { fullName, profession, email, phoneNumber, location } = cvData.personalInfo;
@@ -17,6 +18,7 @@ const PersonalInput = ({
             <Heading
                 icon={personalIcon}
                 text="Personal Information"
+                currentTheme={currentTheme}
             />
 
             <Label>Full Name</Label>
@@ -86,7 +88,7 @@ export const Input = styled.input`
     color: ${props => props.theme.text};
     border-radius: 10px; 
     background-color: transparent;
-    border: 1px solid ${props => props.theme.primary};
+    border: 1px solid ${props => props.theme.secondary};
     border-radius: 6px;
     margin-bottom: 1rem;
 

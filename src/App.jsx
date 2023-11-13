@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GlobalStyle } from './GlobalStyle'
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
@@ -9,19 +9,10 @@ import CV from './components/CV/CV';
 
 function App() {
 
-  const [theme, setTheme] = useState({
-    // text: '#fef9ec',
-    // background: '#050a09',
-    // primary: '#a801c6',
-    // secondary: '#2e4700',
-    // accent: '#38fe16',
+  const [currentTheme, setCurrentTheme] = useState("light");
 
-    // text: "#fbfdfe",
-    // background: "#061a28",
-    // primary: "#1c2cba",
-    // secondary: "#0d041b",
-    // accent: "#641ecc",
-
+  //custom light theme
+  const [lightTheme, setLightTheme] = useState({
     text: "#1a1919",
     background: "#ffffff",
     primary: "#273cff",
@@ -34,6 +25,27 @@ function App() {
 
     font: 'Lato',
   });
+
+
+  //custom dark theme
+  const [darkTheme, setDarkTheme] = useState({
+    text: "#fbfdfe",
+    background: "#052840",
+    primary: "#1f30ca",
+    secondary: "#b78bff",
+    accent: "#7315fe",
+
+    //used for top part of CV
+    cv: "#007BFF",
+
+    font: 'Lato',
+  });
+
+
+
+  const toggleTheme = () => {
+    currentTheme === "light" ? setCurrentTheme("dark") : setCurrentTheme("light");
+  }
 
   //Personal information
   const [cvData, setCvData] = useState({
@@ -99,29 +111,41 @@ function App() {
   };
 
   //change theme color
-  const handleThemeChange = (field, color) => {
-    setTheme({
-      ...theme,
-      [field]: color
-    })
+  const handleThemeValueChange = (field, color) => {
+    currentTheme === "light" ?
+      setLightThene({
+        ...lightTheme,
+        [field]: color
+      })
+      :
+      setDarkTheme({
+        ...darkTheme,
+        [field]: color
+      })
   };
 
+  useEffect(() => {
+    console.log(currentTheme);
+  }, [currentTheme])
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={currentTheme === "light" ? lightTheme : darkTheme} >
       <Container>
         <GlobalStyle />
         <Editor
+          toggleTheme={toggleTheme}
+          currentTheme={currentTheme}
           cvData={cvData}
           updatePersonalInfo={updatePersonalInfo}
           updateEducation={updateEducation}
           updateWorkExperience={updateWorkExperience}
-          handleThemeChange={handleThemeChange}
+          handleThemeValueChange={handleThemeValueChange}
         />
         <CV
           cvData={cvData}
         />
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   )
 }
 
@@ -131,5 +155,5 @@ export default App
 const Container = styled.div`
   display: flex;
   min-height: 100vh;
-  background-color: #222;
+  background-color: #111;
 `;
