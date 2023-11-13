@@ -43,6 +43,7 @@ function App() {
       profession: "Theoretical Physicist",
       email: "sheldon.cooper@caltech.edu",
       phoneNumber: "+1 (555) 987-6543",
+      location: "Pasedina, California",
     },
     education: [
       {

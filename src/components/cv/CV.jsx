@@ -3,12 +3,13 @@ import styled from "styled-components";
 //importing icons
 import number from '../../assets/phone.svg';
 import mail from '../../assets/mail.svg';
+import locationIcon from '../../assets/location.svg';
 
 const CV = ({
     cvData,
 }) => {
 
-    const { fullName, profession, email, phoneNumber } = cvData.personalInfo;
+    const { fullName, profession, email, phoneNumber, location } = cvData.personalInfo;
 
     return (
         <Paper>
@@ -27,6 +28,10 @@ const CV = ({
                     <Icon src={mail} />
                     {email}
                 </Mail>
+                <Location>
+                    <Icon src={locationIcon} />
+                    {location}
+                </Location>
             </PersonalInfoContainer>
         </Paper>
     )
@@ -77,8 +82,9 @@ const Mail = styled.div`
 
 const Phone = styled(Mail)``;
 
+const Location = styled(Mail)``;
+
 const Icon = styled.img`
     width: 1.3rem;
     margin-right: .5rem;
-    filter: invert(100%);
 `;

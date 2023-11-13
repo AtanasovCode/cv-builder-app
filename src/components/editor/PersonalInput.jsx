@@ -10,11 +10,11 @@ const PersonalInput = ({
     updatePersonalInfo,
 }) => {
 
-    const { fullName, profession, email, phoneNumber } = cvData.personalInfo;
+    const { fullName, profession, email, phoneNumber, location } = cvData.personalInfo;
 
     return (
         <Category>
-            <Heading 
+            <Heading
                 icon={personalIcon}
                 text="Personal Information"
             />
@@ -49,6 +49,14 @@ const PersonalInput = ({
                 placeholder="Enter your phone number"
                 value={phoneNumber}
                 onChange={(e) => updatePersonalInfo("phoneNumber", e.target.value)}
+            />
+
+            <Label>Location</Label>
+            <Input
+                type="text"
+                placeholder="Enter your location"
+                value={location}
+                onChange={(e) => updatePersonalInfo("location", e.target.value)}
             />
 
         </Category>
