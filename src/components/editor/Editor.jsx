@@ -6,6 +6,7 @@ import Nav from "./Nav";
 import PersonalInput from "./PersonalInput";
 import EducationInput from "./EducationInput";
 import ColorChange from "./ColorChange";
+import LayoutChange from "./LayoutChange";
 
 const Editor = ({
     toggleTheme,
@@ -15,6 +16,7 @@ const Editor = ({
     updatePersonalInfo,
     updateEducation,
     updateWorkExperience,
+    setCvLayout,
 }) => {
 
     const editorRef = useRef();
@@ -57,6 +59,9 @@ const Editor = ({
             <Nav toggleTheme={toggleTheme} currentTheme={currentTheme} />
 
             <InputContainer>
+
+                <LayoutChange currentTheme={currentTheme} setCvLayout={setCvLayout} />
+
                 <ColorChange handleThemeValueChange={handleThemeValueChange} />
 
                 <PersonalInput

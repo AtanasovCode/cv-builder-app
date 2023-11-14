@@ -5,11 +5,14 @@ import styled from 'styled-components';
 
 //importing components
 import Editor from './components/editor/Editor';
-import CV from './components/CV/CV';
+import CV from './components/cv/CV';
 
 function App() {
 
   const [currentTheme, setCurrentTheme] = useState("light");
+
+  //used to change the layout of the CV
+  const [cvLayout, setCvLayout] = useState("top");
 
   //custom light theme
   const [lightTheme, setLightTheme] = useState({
@@ -140,9 +143,11 @@ function App() {
           updateEducation={updateEducation}
           updateWorkExperience={updateWorkExperience}
           handleThemeValueChange={handleThemeValueChange}
+          setCvLayout={setCvLayout}
         />
         <CV
           cvData={cvData}
+          cvLayout={cvLayout}
         />
       </Container>
     </ThemeProvider >

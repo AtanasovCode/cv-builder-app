@@ -8,6 +8,7 @@ import locationIcon from '../../assets/location.svg';
 
 const CV = ({
     cvData,
+    cvLayout,
 }) => {
 
     const { fullName, profession, email, phoneNumber, location } = cvData.personalInfo;
@@ -25,8 +26,9 @@ const CV = ({
             onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
             onMouseLeave={() => window.removeEventListener('wheel', handleScroll)}
             ref={cvRef}
+            layout={cvLayout}
         >
-            <PersonalInfoContainer>
+            <PersonalInfoContainer layout={cvLayout}>
                 <Profession>
                     {profession}
                 </Profession>
@@ -46,6 +48,10 @@ const CV = ({
                     {location}
                 </Location>
             </PersonalInfoContainer>
+            
+            <ExperienceContainer>
+
+            </ExperienceContainer>
         </Paper>
     )
 }
@@ -60,18 +66,35 @@ const Paper = styled.div`
     color: #000;
     /* margin-left: 1rem; */
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     margin: 1.5rem 3rem;
+
+    ${props => props.layout === "top" && `
+        flex-direction: column;
+    `}
+
+    ${props => props.layout === "left" && `
+            flex-direction: row;
+        `}
+
+    ${props => props.layout === "right" && `
+            flex-direction: row-reverse;
+        `}
 `;
 
 const PersonalInfoContainer = styled.div`
     background-color: ${props => props.theme.cv};
     color: #fff;
     width: 100%;
+    height: auto;
     padding: 2rem;
     transition: background .6s ease;
+
+    ${props => props.layout === "right" || props.layout === "left" ? `
+        height: 100%;
+        width: 40%;
+    ` : `height: auto`}
 `;
 
 const Profession = styled.div`
@@ -107,5 +130,7 @@ const Icon = styled.img`
 const ExperienceContainer = styled.div`
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 `;
 
