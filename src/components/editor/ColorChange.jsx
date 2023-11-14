@@ -8,12 +8,14 @@ import colorIcon from '../../assets/color.svg';
 
 const ColorChange = ({
     handleThemeValueChange,
+    currentTheme,
 }) => {
 
     const [colors, setColors] = useState([
         "#004895",  
-        "#b32100", 
-        "#148400"  
+        "#962006", 
+        "#148400",
+        "#111111",
     ]);
 
 
@@ -28,7 +30,12 @@ const ColorChange = ({
                 {
                     colors.map((color) => {
                         return (
-                            <Color key={color} color={color} onClick={() => handleThemeValueChange("cv", color)} />
+                            <Color 
+                                key={color} 
+                                color={color} 
+                                onClick={() => handleThemeValueChange("cv", color)}
+                                theme={currentTheme}
+                            />
                         );
                     })
                 }
@@ -58,4 +65,5 @@ const Color = styled.div`
     background-color: ${props => props.color};
     margin-right: 1rem;
     cursor: pointer;
+    border: 1px solid ${props => props.theme === "dark" ? "#ddd" : "#000"};
 `;

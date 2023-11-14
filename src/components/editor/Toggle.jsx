@@ -1,14 +1,9 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Toggle = ({
     currentTheme,
     toggleTheme,
 }) => {
-
-    useEffect(() => {
-        console.log(currentTheme);
-    }, [currentTheme])
 
     return (
         <Container theme={currentTheme} onClick={toggleTheme}>

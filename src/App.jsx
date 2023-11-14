@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { GlobalStyle } from './GlobalStyle'
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
@@ -7,77 +7,26 @@ import styled from 'styled-components';
 import Editor from './components/editor/Editor';
 import CV from './components/cv/CV';
 
+import { initialDarkTheme, initialLightTheme } from './components/themes';
+import { initialCVData } from './components/data';
+
 function App() {
 
+  const [cvData, setCvData] = useState(initialCVData);
   const [currentTheme, setCurrentTheme] = useState("light");
+  const [lightTheme, setLightTheme] = useState(initialLightTheme);
+  const [darkTheme, setDarkTheme] = useState(initialDarkTheme);
 
   //used to change the layout of the CV
   const [cvLayout, setCvLayout] = useState("top");
 
-  //custom light theme
-  const [lightTheme, setLightTheme] = useState({
-    text: "#1a1919",
-    background: "#ffffff",
-    primary: "#273cff",
-    secondary: "#2a006d",
-    accent: "#893aff",
 
-
-    //used for top part of CV
-    cv: "#007BFF",
-
-    font: 'Lato',
-  });
-
-
-  //custom dark theme
-  const [darkTheme, setDarkTheme] = useState({
-    text: "#fbfdfe",
-    background: "#052840",
-    primary: "#1f30ca",
-    secondary: "#b78bff",
-    accent: "#7315fe",
-
-    //used for top part of CV
-    cv: "#007BFF",
-
-    font: 'Lato',
-  });
-
-
-
+  //change current theme
   const toggleTheme = () => {
-    currentTheme === "light" ? setCurrentTheme("dark") : setCurrentTheme("light");
+    //currentTheme === "light" ? setCurrentTheme("dark") : setCurrentTheme("light");
+    setCurrentTheme(prevTheme => prevTheme === "light" ? "dark" : "light");
   }
 
-  //Personal information
-  const [cvData, setCvData] = useState({
-    personalInfo: {
-      fullName: "Sheldon Lee Cooper",
-      profession: "Theoretical Physicist",
-      email: "sheldon.cooper@caltech.edu",
-      phoneNumber: "+1 (555) 987-6543",
-      location: "Pasedina, California",
-    },
-    education: [
-      {
-        institution: "California Institute of Technology (Caltech)",
-        degree: "Ph.D. in Theoretical Physics",
-        start: 2000,
-        graduation: 2003,
-      },
-    ],
-    workExperience: [
-      {
-        position: "Senior Theoretical Physicist",
-        company: "Caltech",
-        startYear: "2003",
-        endYear: "Present",
-        responsibilities: "Conducting groundbreaking research in theoretical physics",
-      },
-      // Add more work experience entries as needed
-    ],
-  });
 
   const updatePersonalInfo = (field, value) => {
     setCvData({
@@ -113,10 +62,10 @@ function App() {
     });
   };
 
-  //change theme color
+  //change theme color values
   const handleThemeValueChange = (field, color) => {
     currentTheme === "light" ?
-      setLightThene({
+      setLightTheme({
         ...lightTheme,
         [field]: color
       })
@@ -126,10 +75,6 @@ function App() {
         [field]: color
       })
   };
-
-  useEffect(() => {
-    console.log(currentTheme);
-  }, [currentTheme])
 
   return (
     <ThemeProvider theme={currentTheme === "light" ? lightTheme : darkTheme} >
@@ -160,5 +105,5 @@ export default App
 const Container = styled.div`
   display: flex;
   min-height: 100vh;
-  background-color: #111;
+  background-color: #3e3e3e;
 `;

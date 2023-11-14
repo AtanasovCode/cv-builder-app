@@ -26,9 +26,9 @@ const CV = ({
             onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
             onMouseLeave={() => window.removeEventListener('wheel', handleScroll)}
             ref={cvRef}
-            layout={cvLayout}
+            $layout={cvLayout}
         >
-            <PersonalInfoContainer layout={cvLayout}>
+            <PersonalInfoContainer $layout={cvLayout}>
                 <Profession>
                     {profession}
                 </Profession>
@@ -70,15 +70,15 @@ const Paper = styled.div`
     justify-content: flex-start;
     margin: 1.5rem 3rem;
 
-    ${props => props.layout === "top" && `
+    ${props => props.$layout === "top" && `
         flex-direction: column;
     `}
 
-    ${props => props.layout === "left" && `
+    ${props => props.$layout === "left" && `
             flex-direction: row;
         `}
 
-    ${props => props.layout === "right" && `
+    ${props => props.$layout === "right" && `
             flex-direction: row-reverse;
         `}
 `;
@@ -91,7 +91,7 @@ const PersonalInfoContainer = styled.div`
     padding: 2rem;
     transition: background .6s ease;
 
-    ${props => props.layout === "right" || props.layout === "left" ? `
+    ${props => props.$layout === "right" || props.$layout === "left" ? `
         height: 100%;
         width: 40%;
     ` : `height: auto`}

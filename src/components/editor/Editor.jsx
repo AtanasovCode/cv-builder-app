@@ -62,7 +62,10 @@ const Editor = ({
 
                 <LayoutChange currentTheme={currentTheme} setCvLayout={setCvLayout} />
 
-                <ColorChange handleThemeValueChange={handleThemeValueChange} />
+                <ColorChange 
+                    handleThemeValueChange={handleThemeValueChange}
+                    currentTheme={currentTheme}
+                />
 
                 <PersonalInput
                     cvData={cvData}

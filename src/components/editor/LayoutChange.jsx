@@ -68,7 +68,7 @@ const LayoutContainer = styled.div`
 `;
 
 const LayoutType = styled.img`
-    width: 2rem;
+    width: 1.5rem;
     cursor: pointer;
     margin-right: 1rem;
 
