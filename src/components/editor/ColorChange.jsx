@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+import { Category } from "../../styles/InputStyles";
+
 import Heading from "./Heading";
 
 import colorIcon from '../../assets/color.svg';
@@ -12,15 +14,15 @@ const ColorChange = ({
 }) => {
 
     const [colors, setColors] = useState([
-        "#004895",  
+        "#072e58",  
         "#962006", 
-        "#148400",
+        "#1a6c0b",
         "#111111",
     ]);
 
 
     return (
-        <Container>
+        <Category>
             <Heading
                 icon={colorIcon}
                 text="Background"
@@ -40,17 +42,17 @@ const ColorChange = ({
                     })
                 }
             </ColorContainer>
-        </Container>
+        </Category>
     );
 }
 
 export default ColorChange;
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-`;
+// const Container = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     margin-bottom: 2rem;
+// `;
 
 const ColorContainer = styled.div`
     display: flex;

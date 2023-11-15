@@ -1,0 +1,6 @@
+<svg width="690" height="690" viewBox="0 0 690 690" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="add">
+<path id="plus" opacity="0.5" d="M345 678.334C529.095 678.334 678.334 529.095 678.334 345C678.334 160.905 529.095 11.667 345 11.667C160.905 11.667 11.667 160.905 11.667 345C11.667 529.095 160.905 678.334 345 678.334Z" stroke="white" stroke-width="23"/>
+<path id="border" d="M498 344.5H345.5M345.5 344.5H193M345.5 344.5V192M345.5 344.5V497" stroke="white" stroke-width="50" stroke-linecap="round"/>
+</g>
+</svg>

@@ -1,10 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 
 
 import Nav from "./Nav";
 import PersonalInput from "./PersonalInput";
-import EducationInput from "./EducationInput";
+import EducationExperience from "./EducationExperience";
 import ColorChange from "./ColorChange";
 import LayoutChange from "./LayoutChange";
 
@@ -18,6 +18,9 @@ const Editor = ({
     updateWorkExperience,
     setCvLayout,
 }) => {
+
+    //values used to display/hide inputs for experience
+    const [addExperience, setAddExperience] = useState(false);
 
     const editorRef = useRef();
     let animationFrameId;
@@ -45,10 +48,15 @@ const Editor = ({
         cancelAnimationFrame(animationFrameId);
 
         const startScrollTop = editorRef.current.scrollTop;
-        const endScrollTop = startScrollTop + delta * 1.1;
+        const endScrollTop = startScrollTop + delta * 2;
 
         smoothScroll(startScrollTop, endScrollTop, 300); // 300ms duration
     };
+
+    //function for adding new work/education experience
+    const handleAddExperience = () => {
+        setAddExperience(!addExperience);
+    }
 
     return (
         <Container
@@ -73,10 +81,12 @@ const Editor = ({
                     currentTheme={currentTheme}
                 />
 
-                <EducationInput
+                <EducationExperience
                     cvData={cvData}
                     updateEducation={updateEducation}
                     currentTheme={currentTheme}
+                    addExperience={addExperience}
+                    handleAddExperience={handleAddExperience}
                 />
             </InputContainer>
         </Container>

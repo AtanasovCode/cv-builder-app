@@ -1,5 +1,4 @@
-import { useState } from "react";
-import styled from "styled-components";
+import * as Styled from '../../styles/InputStyles';
 
 import personalIcon from '../../assets/user.svg';
 import Heading from "./Heading";
@@ -14,86 +13,55 @@ const PersonalInput = ({
     const { fullName, profession, email, phoneNumber, location } = cvData.personalInfo;
 
     return (
-        <Category>
+        <Styled.Category>
             <Heading
                 icon={personalIcon}
                 text="Personal Information"
                 currentTheme={currentTheme}
             />
 
-            <Label>Full Name</Label>
-            <Input
+            <Styled.Label>Full Name</Styled.Label>
+            <Styled.Input
                 type="text"
                 placeholder="Enter your full name"
                 value={fullName}
                 onChange={(e) => updatePersonalInfo("fullName", e.target.value)}
             />
 
-            <Label>Profession</Label>
-            <Input
+            <Styled.Label>Profession</Styled.Label>
+            <Styled.Input
                 type="text"
                 placeholder="Enter your profession"
                 value={profession}
                 onChange={(e) => updatePersonalInfo("profession", e.target.value)}
             />
 
-            <Label>E-Mail</Label>
-            <Input
+            <Styled.Label>E-Mail</Styled.Label>
+            <Styled.Input
                 type="text"
                 placeholder="Enter your e-mail address"
                 value={email}
                 onChange={(e) => updatePersonalInfo("email", e.target.value)}
             />
 
-            <Label>Phone Number</Label>
-            <Input
+            <Styled.Label>Phone Number</Styled.Label>
+            <Styled.Input
                 type="text"
                 placeholder="Enter your phone number"
                 value={phoneNumber}
                 onChange={(e) => updatePersonalInfo("phoneNumber", e.target.value)}
             />
 
-            <Label>Location</Label>
-            <Input
+            <Styled.Label>Location</Styled.Label>
+            <Styled.Input
                 type="text"
                 placeholder="Enter your location"
                 value={location}
                 onChange={(e) => updatePersonalInfo("location", e.target.value)}
             />
 
-        </Category>
+        </Styled.Category>
     );
 }
 
 export default PersonalInput;
-
-
-export const Category = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: .5rem;
-`;
-
-
-export const Label = styled.label`
-    font-size: 16px;
-    color: ${props => props.theme.text};
-    margin-bottom: .3rem;
-`;
-
-export const Input = styled.input`
-    width: 100%;
-    padding: .5rem;
-    font-size: 16px;
-    color: ${props => props.theme.text};
-    border-radius: 10px; 
-    background-color: transparent;
-    border: 1px solid ${props => props.theme.secondary};
-    border-radius: 6px;
-    margin-bottom: 1rem;
-
-    &:focus {
-        border: 1px solid ${props => props.theme.primary};
-        outline: none;
-    }
-`;

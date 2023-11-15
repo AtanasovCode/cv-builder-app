@@ -7,13 +7,13 @@ import styled from 'styled-components';
 import Editor from './components/editor/Editor';
 import CV from './components/cv/CV';
 
-import { initialDarkTheme, initialLightTheme } from './components/themes';
-import { initialCVData } from './components/data';
+import { initialDarkTheme, initialLightTheme } from './data/themes';
+import { initialCVData } from './data/data';
 
 function App() {
 
   const [cvData, setCvData] = useState(initialCVData);
-  const [currentTheme, setCurrentTheme] = useState("light");
+  const [currentTheme, setCurrentTheme] = useState("dark");
   const [lightTheme, setLightTheme] = useState(initialLightTheme);
   const [darkTheme, setDarkTheme] = useState(initialDarkTheme);
 
@@ -105,5 +105,5 @@ export default App
 const Container = styled.div`
   display: flex;
   min-height: 100vh;
-  background-color: #3e3e3e;
+  background-color: #cbcbcb;
 `;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import Heading from "./Heading";
 
+import { Category } from "../../styles/InputStyles";
+
 import layoutIcon from '../../assets/layout.svg';
 import topIcon from '../../assets/layout-top.svg';
 import leftIcon from '../../assets/layout-left.svg';
@@ -30,7 +32,7 @@ const LayoutChange = ({
     ])
 
     return (
-        <Container>
+        <Category>
             <Heading icon={layoutIcon} text="Layout" currentTheme={currentTheme} />
 
             <LayoutContainer>
@@ -49,7 +51,7 @@ const LayoutChange = ({
                 }
             </LayoutContainer>
 
-        </Container>
+        </Category>
     );
 }
 

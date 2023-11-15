@@ -1,61 +1,65 @@
-import { useState } from 'react';
-//importing similar styles from PersonalStyled.Input
-import * as Styled from './PersonalInput';
 
-import Heading from './Heading';
-import educationIcon from '../../assets/education.svg';
+//importing similar styles for all input components
+import * as Styled from '../../styles/InputStyles';
+
+import InputField from './InputField';
+
+import Button from './Button';
+
+import { useState } from 'react';
 
 const EducationInput = ({
-    cvData,
-    updateEducation,
-    currentTheme,
+    handleAddExperience,
 }) => {
 
-    const { institution, degree, start, graduation } = cvData.education[0];
+
+
+    const [institution, setInstitution] = useState();
+    const [degree, setDegree] = useState();
+    const [start, setStart] = useState();
+    const [graduation, setGraduation] = useState();
+
 
     return (
-        <Styled.Category>
-            <Heading
-                icon={educationIcon}
-                text={"Education"}
-                currentTheme={currentTheme}
-            />
 
-            <Styled.Label>
-                Institution Name
-            </Styled.Label>
-            <Styled.Input
-                type="text"
-                placeholder="Enter institution name"
+        <Styled.Category >
+
+            <InputField
+                label="Institution Name"
+                placeholder="Emter institution name"
                 value={institution}
-                onChange={(e) => updateEducation(0, "institution", e.target.value)}
             />
 
-            <Styled.Label>Degree</Styled.Label>
-            <Styled.Input
-                type="text"
+            <InputField
+                label="Degree"
                 placeholder="Enter your degree"
                 value={degree}
-                onChange={(e) => updateEducation(0, "degree", e.target.value)}
             />
 
-            <Styled.Label>Start Year</Styled.Label>
-            <Styled.Input
-                type="text"
-                placeholder="Enter the year you started"
+            <InputField
+                label="Start Year"
+                placeholder="Enter start year"
                 value={start}
-                onChange={(e) => updateEducation(0, "start", e.target.value)}
             />
 
-            <Styled.Label>Graduation</Styled.Label>
-            <Styled.Input
-                type="text"
+            <InputField
+                label="Graduation"
                 placeholder="Enter graduation year"
                 value={graduation}
-                onChange={(e) => updateEducation(0, "graduation", e.target.value)}
             />
 
-        </Styled.Category>
+            <Styled.ButtonContainer>
+                <Styled.ButtonWrapper>
+                    <Button value="Delete" />
+                </Styled.ButtonWrapper>
+
+                <Styled.ButtonWrapper>
+                    <Button value="Cancel" handleClick={handleAddExperience} />
+                    <Button value="Submit" />
+                </Styled.ButtonWrapper>
+            </Styled.ButtonContainer>
+
+        </Styled.Category >
     );
 }
 
