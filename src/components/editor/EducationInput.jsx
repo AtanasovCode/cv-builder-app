@@ -10,14 +10,15 @@ import { useState } from 'react';
 
 const EducationInput = ({
     handleAddExperience,
+    submitEducation,
 }) => {
 
 
 
-    const [institution, setInstitution] = useState();
-    const [degree, setDegree] = useState();
-    const [start, setStart] = useState();
-    const [graduation, setGraduation] = useState();
+    const [institution, setInstitution] = useState("");
+    const [degree, setDegree] = useState("");
+    const [start, setStart] = useState("");
+    const [graduation, setGraduation] = useState("");
 
 
     return (
@@ -28,24 +29,28 @@ const EducationInput = ({
                 label="Institution Name"
                 placeholder="Emter institution name"
                 value={institution}
+                onChange={(e) => setInstitution(e.target.value)}
             />
 
             <InputField
                 label="Degree"
                 placeholder="Enter your degree"
                 value={degree}
+                onChange={(e) => setDegree(e.target.value)}
             />
 
             <InputField
                 label="Start Year"
                 placeholder="Enter start year"
                 value={start}
+                onChange={(e) => setStart(e.target.value)}
             />
 
             <InputField
                 label="Graduation"
                 placeholder="Enter graduation year"
                 value={graduation}
+                onChange={(e) => setGraduation(e.target.value)}
             />
 
             <Styled.ButtonContainer>
@@ -55,7 +60,7 @@ const EducationInput = ({
 
                 <Styled.ButtonWrapper>
                     <Button value="Cancel" handleClick={handleAddExperience} />
-                    <Button value="Submit" />
+                    <Button value="Submit" handleClick={() => submitEducation(institution, degree, start, graduation)} />
                 </Styled.ButtonWrapper>
             </Styled.ButtonContainer>
 

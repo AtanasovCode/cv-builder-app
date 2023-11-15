@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GlobalStyle } from './GlobalStyle'
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
@@ -27,29 +27,6 @@ function App() {
     setCurrentTheme(prevTheme => prevTheme === "light" ? "dark" : "light");
   }
 
-
-  const updatePersonalInfo = (field, value) => {
-    setCvData({
-      ...cvData,
-      personalInfo: {
-        ...cvData.personalInfo,
-        [field]: value,
-      },
-    });
-  };
-
-  const updateEducation = (index, field, value) => {
-    const updatedEducation = [...cvData.education];
-    updatedEducation[index] = {
-      ...updatedEducation[index],
-      [field]: value,
-    };
-    setCvData({
-      ...cvData,
-      education: updatedEducation,
-    });
-  };
-
   const updateWorkExperience = (index, field, value) => {
     const updatedWorkExperience = [...cvData.workExperience];
     updatedWorkExperience[index] = {
@@ -76,6 +53,10 @@ function App() {
       })
   };
 
+  useEffect(() => {
+    console.log(cvData);
+  }, [cvData])
+
   return (
     <ThemeProvider theme={currentTheme === "light" ? lightTheme : darkTheme} >
       <Container>
@@ -84,9 +65,7 @@ function App() {
           toggleTheme={toggleTheme}
           currentTheme={currentTheme}
           cvData={cvData}
-          updatePersonalInfo={updatePersonalInfo}
-          updateEducation={updateEducation}
-          updateWorkExperience={updateWorkExperience}
+          setCvData={setCvData}
           handleThemeValueChange={handleThemeValueChange}
           setCvLayout={setCvLayout}
         />

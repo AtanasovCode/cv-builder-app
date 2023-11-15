@@ -15,9 +15,10 @@ const EducationExperience = ({
     currentTheme,
     addExperience,
     handleAddExperience,
+    submitEducation,
 }) => {
     return (
-        <Styled.ExperienceContainer onClick={() => handleAddExperience()}>
+        <Styled.ExperienceContainer>
             <Heading
                 icon={educationIcon}
                 text={"Education"}
@@ -30,6 +31,7 @@ const EducationExperience = ({
                 addExperience &&
                 <EducationInput 
                     handleAddExperience={handleAddExperience}
+                    submitEducation={submitEducation}
                 />
             }
         </Styled.ExperienceContainer>

@@ -13,9 +13,7 @@ const Editor = ({
     currentTheme,
     handleThemeValueChange,
     cvData,
-    updatePersonalInfo,
-    updateEducation,
-    updateWorkExperience,
+    setCvData,
     setCvLayout,
 }) => {
 
@@ -58,6 +56,45 @@ const Editor = ({
         setAddExperience(!addExperience);
     }
 
+    const updatePersonalInfo = (field, value) => {
+        setCvData({
+            ...cvData,
+            personalInfo: {
+                ...cvData.personalInfo,
+                [field]: value,
+            },
+        });
+    };
+
+    const updateEducation = (index, field, value) => {
+        const updatedEducation = [...cvData.education];
+        updatedEducation[index] = {
+            ...updatedEducation[index],
+            [field]: value,
+        };
+        setCvData({
+            ...cvData,
+            education: updatedEducation,
+        });
+    };
+
+    const submitEducation = (institution, degree, start, graduation) => {
+        const updatedEducation = {
+            institution: institution,
+            degree: degree,
+            start: start,
+            graduation: graduation,
+        }
+
+        setCvData((prevCVData) => ({
+            ...prevCVData,
+            education: [...prevCVData.education, updatedEducation],
+        }));
+
+        //close inputs after adding new data
+        handleAddExperience()
+    }
+
     return (
         <Container
             onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
@@ -70,7 +107,7 @@ const Editor = ({
 
                 <LayoutChange currentTheme={currentTheme} setCvLayout={setCvLayout} />
 
-                <ColorChange 
+                <ColorChange
                     handleThemeValueChange={handleThemeValueChange}
                     currentTheme={currentTheme}
                 />
@@ -87,6 +124,7 @@ const Editor = ({
                     currentTheme={currentTheme}
                     addExperience={addExperience}
                     handleAddExperience={handleAddExperience}
+                    submitEducation={submitEducation}
                 />
             </InputContainer>
         </Container>
