@@ -5,6 +5,18 @@ export const ExperienceContainer = styled.div`
     flex-direction: column;
 `;
 
+export const AddedExperienceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const Experience = styled.div`
+    padding: 1rem;
+    border: 1px solid #ddd;
+`;
+
 export const Category = styled.div`
     display: flex;
     flex-direction: column;

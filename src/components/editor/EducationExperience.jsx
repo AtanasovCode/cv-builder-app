@@ -13,8 +13,8 @@ const EducationExperience = ({
     cvData,
     updateEducation,
     currentTheme,
-    addExperience,
-    handleAddExperience,
+    addEducationExperience,
+    setAddEducationExperience,
     submitEducation,
 }) => {
     return (
@@ -23,14 +23,15 @@ const EducationExperience = ({
                 icon={educationIcon}
                 text={"Education"}
                 currentTheme={currentTheme}
-                addExperience={addExperience}
-                handleAddExperience={handleAddExperience}
+                eddExperience={addEducationExperience}
+                setExperience={setAddEducationExperience}
             />
 
             {
-                addExperience &&
-                <EducationInput 
-                    handleAddExperience={handleAddExperience}
+                addEducationExperience &&
+                <EducationInput
+                    addExperience={addEducationExperience}
+                    setExperience={setAddEducationExperience}
                     submitEducation={submitEducation}
                 />
             }

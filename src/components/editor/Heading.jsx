@@ -7,7 +7,7 @@ const Heading = ({
     text,
     currentTheme,
     addExperience,
-    handleAddExperience,
+    setExperience,
 }) => {
 
     return (
@@ -26,7 +26,7 @@ const Heading = ({
                         theme={currentTheme}
                         $active={addExperience}
                         onClick={() => {
-                            !addExperience && handleAddExperience()
+                            !addExperience && setExperience(!addExperience)
                         }} 
                     />
                     : <></>

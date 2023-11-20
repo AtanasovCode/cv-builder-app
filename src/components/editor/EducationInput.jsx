@@ -9,7 +9,8 @@ import Button from './Button';
 import { useState } from 'react';
 
 const EducationInput = ({
-    handleAddExperience,
+    addExperience,
+    setExperience,
     submitEducation,
 }) => {
 
@@ -59,7 +60,7 @@ const EducationInput = ({
                 </Styled.ButtonWrapper>
 
                 <Styled.ButtonWrapper>
-                    <Button value="Cancel" handleClick={handleAddExperience} />
+                    <Button value="Cancel" handleClick={() => setExperience(!addExperience)} />
                     <Button value="Submit" handleClick={() => submitEducation(institution, degree, start, graduation)} />
                 </Styled.ButtonWrapper>
             </Styled.ButtonContainer>

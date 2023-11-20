@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Nav from "./Nav";
 import PersonalInput from "./PersonalInput";
 import EducationExperience from "./EducationExperience";
+import WorkExperience from "./WorkExperience";
 import ColorChange from "./ColorChange";
 import LayoutChange from "./LayoutChange";
 
@@ -17,8 +18,10 @@ const Editor = ({
     setCvLayout,
 }) => {
 
-    //values used to display/hide inputs for experience
-    const [addExperience, setAddExperience] = useState(false);
+    //values used to display/hide inputs for education experience
+    const [addEducationExperience, setAddEducationExperience] = useState(false);
+    //values used to display/hide inputs for work experience
+    const [addWorkExperience, setAddWorkExperience] = useState(false);
 
     const editorRef = useRef();
     let animationFrameId;
@@ -50,11 +53,6 @@ const Editor = ({
 
         smoothScroll(startScrollTop, endScrollTop, 300); // 300ms duration
     };
-
-    //function for adding new work/education experience
-    const handleAddExperience = () => {
-        setAddExperience(!addExperience);
-    }
 
     const updatePersonalInfo = (field, value) => {
         setCvData({
@@ -95,6 +93,24 @@ const Editor = ({
         handleAddExperience()
     }
 
+    const submitWork = (position, company, startYear, endYear, responsibility) => {
+        const updatedWork = {
+            position: position,
+            company: company,
+            startYear: startYear,
+            endYear: endYear,
+            responsibility: responsibility,
+        }
+
+        setCvData((prevCVData) => ({
+            ...prevCVData,
+            workExperience: [...prevCVData.workExperience, updatedWork],
+        }));
+
+        //close inputs after adding new data
+        setAddWorkExperience(!addWorkExperience);
+    }
+
     return (
         <Container
             onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
@@ -122,9 +138,17 @@ const Editor = ({
                     cvData={cvData}
                     updateEducation={updateEducation}
                     currentTheme={currentTheme}
-                    addExperience={addExperience}
-                    handleAddExperience={handleAddExperience}
+                    addEducationExperience={addEducationExperience}
+                    setAddEducationExperience={setAddEducationExperience}
                     submitEducation={submitEducation}
+                />
+
+                <WorkExperience
+                    cvData={cvData}
+                    currentTheme={currentTheme}
+                    addWorkExperience={addWorkExperience}
+                    setAddWorkExperience={setAddWorkExperience}
+                    submitWork={submitWork}
                 />
             </InputContainer>
         </Container>
