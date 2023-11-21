@@ -8,13 +8,25 @@ export const ExperienceContainer = styled.div`
 export const AddedExperienceContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
+`;
+
+export const Experience = styled.div`
+    padding: .8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
     align-items: center;
     justify-content: space-between;
 `;
 
-export const Experience = styled.div`
-    padding: 1rem;
-    border: 1px solid #ddd;
+export const ExpandIcon = styled.img`
+    width: 1rem;
+
+    ${props => props.theme === "dark" && `
+        filter: invert(100%);
+    `}
 `;
 
 export const Category = styled.div`
@@ -22,6 +34,7 @@ export const Category = styled.div`
     flex-direction: column;
     margin-bottom: 2.2rem;
 `;
+
 
 
 export const Label = styled.label`

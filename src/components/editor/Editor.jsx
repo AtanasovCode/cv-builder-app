@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+
 import styled from "styled-components";
 
 
@@ -22,6 +24,13 @@ const Editor = ({
     const [addEducationExperience, setAddEducationExperience] = useState(false);
     //values used to display/hide inputs for work experience
     const [addWorkExperience, setAddWorkExperience] = useState(false);
+
+    //used for the ID of the selected experience
+    const [selectedID, setSelectedID] = useState("");
+
+    //values used for displaying already added experience
+    const [showEducation, setShowEducation] = useState(false);
+    const [showWork, setShowWork] = useState(false);
 
     const editorRef = useRef();
     let animationFrameId;
@@ -78,6 +87,7 @@ const Editor = ({
 
     const submitEducation = (institution, degree, start, graduation) => {
         const updatedEducation = {
+            id: uuidv4(),
             institution: institution,
             degree: degree,
             start: start,
@@ -95,6 +105,7 @@ const Editor = ({
 
     const submitWork = (position, company, startYear, endYear, responsibility) => {
         const updatedWork = {
+            id: uuidv4(),
             position: position,
             company: company,
             startYear: startYear,
@@ -141,6 +152,8 @@ const Editor = ({
                     addEducationExperience={addEducationExperience}
                     setAddEducationExperience={setAddEducationExperience}
                     submitEducation={submitEducation}
+                    selectedID={selectedID}
+                    setSelectedID={setSelectedID}
                 />
 
                 <WorkExperience
@@ -149,6 +162,10 @@ const Editor = ({
                     addWorkExperience={addWorkExperience}
                     setAddWorkExperience={setAddWorkExperience}
                     submitWork={submitWork}
+                    showWork={showWork}
+                    setShowWork={setShowWork}
+                    selectedID={selectedID}
+                    setSelectedID={setSelectedID}
                 />
             </InputContainer>
         </Container>
