@@ -103,6 +103,17 @@ const Editor = ({
         handleAddExperience()
     }
 
+    const resetWorkValues = () => {
+        // Reset state variables
+        setPosition("");
+        setCompany("");
+        setStartYear("");
+        setEndYear("");
+        setResponsibility("");
+        setAddWorkExperience(false);
+        setSelectedID(null);
+    }
+
     const submitWork = (position, company, startYear, endYear, responsibility) => {
         const updatedWork = {
             id: uuidv4(),
@@ -121,6 +132,43 @@ const Editor = ({
         //close inputs after adding new data
         setAddWorkExperience(!addWorkExperience);
     }
+
+    const updateWork = (
+        position,
+        company,
+        startYear,
+        endYear,
+        responsibility,
+    ) => {
+        // Identify the index of the selected work experience
+        const experienceIndex = cvData.workExperience.findIndex((exp) => exp.id === selectedID);
+
+        // Create a new work experience object with the updated values
+        const updatedExperience = {
+            id: selectedID,
+            position,
+            company,
+            startYear,
+            endYear,
+            responsibility,
+        };
+
+        if (experienceIndex !== -1) {
+            // If the selectedID is found, update the existing work experience
+            const updatedWorkExperience = [...cvData.workExperience];
+            updatedWorkExperience[experienceIndex] = updatedExperience;
+
+            // Update cvData with the modified work experience array
+            setCvData({ ...cvData, workExperience: updatedWorkExperience });
+        } else {
+            // If selectedID is not found, add a new work experience
+            setCvData({ ...cvData, workExperience: [...cvData.workExperience, updatedExperience] });
+        }
+
+        //close inputs after updating experience data
+        setShowWork(!showWork);
+    };
+
 
     return (
         <Container
@@ -166,6 +214,7 @@ const Editor = ({
                     setShowWork={setShowWork}
                     selectedID={selectedID}
                     setSelectedID={setSelectedID}
+                    updateWork={updateWork}
                 />
             </InputContainer>
         </Container>

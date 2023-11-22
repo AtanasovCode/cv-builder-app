@@ -18,6 +18,7 @@ const WorkExperience = ({
     setShowWork,
     selectedID,
     setSelectedID,
+    updateWork,
 }) => {
 
     const [position, setPosition] = useState("");
@@ -51,50 +52,46 @@ const WorkExperience = ({
                     cvData.workExperience &&
                     cvData.workExperience.map((data) => {
                         return (
-                            <Styled.AddedExperienceContainer>
-                                <Styled.Experience
-                                    onClick={() => {
-                                        setSelectedID(data.id)
-                                        setShowWork(!showWork);
-                                        setSelectedExperience(data); // Set values for selected experience
-                                    }}
-                                >
-                                    {data.company}
+                            <Styled.AddedExperienceContainer key={data.id}>
+                                <Styled.ExperienceWrapper>
+                                    <Styled.Experience
+                                        onClick={() => {
+                                            setSelectedID(data.id)
+                                            setShowWork(!showWork);
+                                            setSelectedExperience(data); // Set values for selected experience
+                                        }}
+                                    >
+                                        {data.company}
 
-                                    <Styled.ExpandIcon
-                                        src={expandIcon}
-                                        alt="expand icon"
-                                        theme={currentTheme}
-                                    />
-                                </Styled.Experience>
-
-                                {
-                                    showWork && data.id === selectedID ?
-                                        <WorkInput
-                                            position={position}
-                                            setPosition={setPosition}
-
-                                            company={company}
-                                            setCompany={setCompany}
-
-                                            startYear={startYear}
-                                            setStartYear={setStartYear}
-
-                                            endYear={endYear}
-                                            setEndYear={setEndYear}
-
-                                            responsibility={responsibility}
-                                            setResponsibility={setResponsibility}
-
-                                            setExperience={setAddWorkExperience}
-                                            addExperience={addWorkExperience}
-
-                                            submitWork={submitWork}
+                                        <Styled.ExpandIcon
+                                            src={expandIcon}
+                                            alt="expand icon"
+                                            theme={currentTheme}
                                         />
-                                        : <></>
-                                }
+                                    </Styled.Experience>
 
-
+                                    {
+                                        showWork && data.id === selectedID && (
+                                            <Styled.InputContainer>
+                                                <WorkInput
+                                                    position={position}
+                                                    setPosition={setPosition}
+                                                    company={company}
+                                                    setCompany={setCompany}
+                                                    startYear={startYear}
+                                                    setStartYear={setStartYear}
+                                                    endYear={endYear}
+                                                    setEndYear={setEndYear}
+                                                    responsibility={responsibility}
+                                                    setResponsibility={setResponsibility}
+                                                    setExperience={setShowWork}
+                                                    addExperience={showWork}
+                                                    submitWork={updateWork}
+                                                />
+                                            </Styled.InputContainer>
+                                        )
+                                    }
+                                </Styled.ExperienceWrapper>
                             </Styled.AddedExperienceContainer>
                         );
                     })

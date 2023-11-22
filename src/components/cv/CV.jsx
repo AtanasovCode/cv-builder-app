@@ -60,6 +60,19 @@ const CV = ({
                 }
 
             </ExperienceContainer>
+
+            <ExperienceContainer>
+                {
+                    cvData.workExperience.map((work) => {
+                        return (
+                            <div key={work.id}>
+                                <h2> {work.company} </h2>
+                                <h2> {work.position} </h2>
+                            </div>
+                        );
+                    })
+                }
+            </ExperienceContainer>
         </Paper>
     )
 }

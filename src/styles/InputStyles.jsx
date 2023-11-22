@@ -9,16 +9,26 @@ export const AddedExperienceContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 1rem;
+`;
+
+export const ExperienceWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+    padding: .8rem 1rem;
+    border-radius: 6px;
 `;
 
 export const Experience = styled.div`
-    padding: .8rem 1rem;
-    border: 1px solid #ddd;
     border-radius: 6px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
 `;
 
 export const ExpandIcon = styled.img`
@@ -27,6 +37,10 @@ export const ExpandIcon = styled.img`
     ${props => props.theme === "dark" && `
         filter: invert(100%);
     `}
+`;
+
+export const InputContainer = styled.div`
+    margin-top: 1.2rem;
 `;
 
 export const Category = styled.div`

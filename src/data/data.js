@@ -2,6 +2,7 @@
 
 export const initialCVData = {
     personalInfo: {
+        id: "personal info example id",
         fullName: "Sheldon Lee Cooper",
         profession: "Theoretical Physicist",
         email: "sheldon.cooper@caltech.edu",
@@ -10,6 +11,7 @@ export const initialCVData = {
     },
     education: [
         {
+            id: "education example key",
             institution: "California Institute of Technology (Caltech)",
             degree: "Ph.D. in Theoretical Physics",
             start: 2000,
@@ -18,6 +20,7 @@ export const initialCVData = {
     ],
     workExperience: [
         {
+            id: "work example key",
             position: "Senior Theoretical Physicist",
             company: "Caltech",
             startYear: "2003",
