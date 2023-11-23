@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import styled from "styled-components";
 
+import useSmoothScroll from '../hooks/useSmoothScroll';
+
 //importing icons
 import number from '../../assets/phone.svg';
 import mail from '../../assets/mail.svg';
@@ -13,19 +15,14 @@ const CV = ({
 
     const { fullName, profession, email, phoneNumber, location } = cvData.personalInfo;
 
-    const cvRef = useRef();
-
-    const handleScroll = (e) => {
-        const delta = e.deltaY;
-        cvRef.current.scrollTop += delta;
-        console.log(delta);
-    };
+    //used for smooth scrolling with custom hook
+    const { targetRef, handleScroll } = useSmoothScroll();
 
     return (
         <Paper
             onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
             onMouseLeave={() => window.removeEventListener('wheel', handleScroll)}
-            ref={cvRef}
+            ref={targetRef}
             $layout={cvLayout}
         >
             <PersonalInfoContainer $layout={cvLayout}>

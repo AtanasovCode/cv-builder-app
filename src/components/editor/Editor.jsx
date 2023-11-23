@@ -1,4 +1,7 @@
 import { useRef, useState } from "react";
+
+import useSmoothScroll from '../hooks/useSmoothScroll';
+
 import { v4 as uuidv4 } from 'uuid';
 
 import styled from "styled-components";
@@ -20,6 +23,9 @@ const Editor = ({
     setCvLayout,
 }) => {
 
+    //used for smooth scrolling with custom hook
+    const { targetRef, handleScroll } = useSmoothScroll();
+
     //values used to display/hide inputs for education experience
     const [addEducationExperience, setAddEducationExperience] = useState(false);
     //values used to display/hide inputs for work experience
@@ -32,36 +38,7 @@ const Editor = ({
     const [showEducation, setShowEducation] = useState(false);
     const [showWork, setShowWork] = useState(false);
 
-    const editorRef = useRef();
-    let animationFrameId;
 
-
-    const smoothScroll = (start, end, duration) => {
-        const startTime = performance.now();
-        const animateScroll = (timestamp) => {
-            const elapsed = timestamp - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const scrollTop = start + (end - start) * progress;
-
-            editorRef.current.scrollTop = scrollTop;
-
-            if (progress < 1) {
-                animationFrameId = requestAnimationFrame(animateScroll);
-            }
-        };
-
-        animateScroll(startTime);
-    };
-
-    const handleScroll = (e) => {
-        const delta = e.deltaY;
-        cancelAnimationFrame(animationFrameId);
-
-        const startScrollTop = editorRef.current.scrollTop;
-        const endScrollTop = startScrollTop + delta * 2;
-
-        smoothScroll(startScrollTop, endScrollTop, 300); // 300ms duration
-    };
 
     const updatePersonalInfo = (field, value) => {
         setCvData({
@@ -73,25 +50,13 @@ const Editor = ({
         });
     };
 
-    const updateEducation = (index, field, value) => {
-        const updatedEducation = [...cvData.education];
-        updatedEducation[index] = {
-            ...updatedEducation[index],
-            [field]: value,
-        };
-        setCvData({
-            ...cvData,
-            education: updatedEducation,
-        });
-    };
-
     const submitEducation = (institution, degree, start, graduation) => {
         const updatedEducation = {
             id: uuidv4(),
-            institution: institution,
-            degree: degree,
-            start: start,
-            graduation: graduation,
+            institution,
+            degree,
+            start,
+            graduation
         }
 
         setCvData((prevCVData) => ({
@@ -174,7 +139,7 @@ const Editor = ({
         <Container
             onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
             onMouseLeave={() => window.removeEventListener('wheel', handleScroll)}
-            ref={editorRef}
+            ref={targetRef}
         >
             <Nav toggleTheme={toggleTheme} currentTheme={currentTheme} />
 
@@ -195,7 +160,6 @@ const Editor = ({
 
                 <EducationExperience
                     cvData={cvData}
-                    updateEducation={updateEducation}
                     currentTheme={currentTheme}
                     addEducationExperience={addEducationExperience}
                     setAddEducationExperience={setAddEducationExperience}
