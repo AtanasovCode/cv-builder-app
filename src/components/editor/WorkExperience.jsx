@@ -19,6 +19,7 @@ const WorkExperience = ({
     selectedID,
     setSelectedID,
     updateWork,
+    deleteExperience,
 }) => {
 
     const [workValues, setWorkValues] = useState({
@@ -101,6 +102,7 @@ const WorkExperience = ({
                                                     setExperience={setShowWork}
                                                     addExperience={showWork}
                                                     submitWork={updateWork}
+                                                    deleteExperience={deleteExperience}
                                                 />
                                             </Styled.InputContainer>
                                         )

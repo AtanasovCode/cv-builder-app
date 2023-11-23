@@ -13,6 +13,7 @@ const WorkInput = ({
     setExperience,
 
     submitWork,
+    deleteExperience,
 }) => {
     return (
         <Styled.Category>
@@ -55,7 +56,7 @@ const WorkInput = ({
 
             <Styled.ButtonContainer>
                 <Styled.ButtonWrapper>
-                    <Button value="Delete" />
+                    <Button value="Delete" handleClick={() => deleteExperience("workExperience")} />
                 </Styled.ButtonWrapper>
 
                 <Styled.ButtonWrapper>

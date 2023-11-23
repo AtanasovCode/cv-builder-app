@@ -117,6 +117,29 @@ const Editor = ({
         setShowWork(!showWork);
     };
 
+    const deleteExperience = (experience) => {
+
+        const updatedCvData = { ...cvData };
+
+        const targetArray = updatedCvData[experience];
+
+        if (targetArray) {
+            const indexToRemove = targetArray.findIndex((obj) => obj.id === selectedID);
+
+            if (indexToRemove !== -1) {
+                targetArray.splice(indexToRemove, 1);
+                console.log(`Array with index ${selectedID} has been removed`);
+
+                // Update the state with the modified cvData
+                setCvData(updatedCvData);
+            } else {
+                console.log(`Could not find array with the selected id`);
+            }
+        } else {
+            console.log("Could not find target array");
+        }
+    }
+
 
     return (
         <Container
@@ -162,6 +185,7 @@ const Editor = ({
                     selectedID={selectedID}
                     setSelectedID={setSelectedID}
                     updateWork={updateWork}
+                    deleteExperience={deleteExperience}
                 />
             </InputContainer>
         </Container>
