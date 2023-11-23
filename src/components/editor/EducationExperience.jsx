@@ -11,12 +11,14 @@ import Heading from "./Heading";
 
 const EducationExperience = ({
     cvData,
-    updateEducation,
     currentTheme,
     addEducationExperience,
     setAddEducationExperience,
     submitEducation,
 }) => {
+
+    
+
     return (
         <Styled.ExperienceContainer>
             <Heading

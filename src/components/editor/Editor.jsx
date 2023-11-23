@@ -68,25 +68,14 @@ const Editor = ({
         handleAddExperience()
     }
 
-    const resetWorkValues = () => {
-        // Reset state variables
-        setPosition("");
-        setCompany("");
-        setStartYear("");
-        setEndYear("");
-        setResponsibility("");
-        setAddWorkExperience(false);
-        setSelectedID(null);
-    }
-
-    const submitWork = (position, company, startYear, endYear, responsibility) => {
+    const submitWork = (data) => {
         const updatedWork = {
             id: uuidv4(),
-            position: position,
-            company: company,
-            startYear: startYear,
-            endYear: endYear,
-            responsibility: responsibility,
+            position: data.position,
+            company: data.company,
+            startYear: data.startYear,
+            endYear: data.endYear,
+            responsibility: data.responsibility,
         }
 
         setCvData((prevCVData) => ({
@@ -98,24 +87,18 @@ const Editor = ({
         setAddWorkExperience(!addWorkExperience);
     }
 
-    const updateWork = (
-        position,
-        company,
-        startYear,
-        endYear,
-        responsibility,
-    ) => {
+    const updateWork = (data) => {
         // Identify the index of the selected work experience
         const experienceIndex = cvData.workExperience.findIndex((exp) => exp.id === selectedID);
 
         // Create a new work experience object with the updated values
         const updatedExperience = {
             id: selectedID,
-            position,
-            company,
-            startYear,
-            endYear,
-            responsibility,
+            position: data.position,
+            company: data.company,
+            startYear: data.startYear,
+            endYear: data.endYear,
+            responsibility: data.responsibility,
         };
 
         if (experienceIndex !== -1) {

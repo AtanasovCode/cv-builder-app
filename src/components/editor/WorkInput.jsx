@@ -6,16 +6,8 @@ import Button from './Button';
 import InputField from './InputField';
 
 const WorkInput = ({
-    position,
-    setPosition,
-    company,
-    setCompany,
-    startYear,
-    setStartYear,
-    endYear,
-    setEndYear,
-    responsibility,
-    setResponsibility,
+    workValues,
+    handleValueUpdate,
 
     addExperience,
     setExperience,
@@ -28,36 +20,36 @@ const WorkInput = ({
             <InputField
                 label="Position"
                 placeholder="Enter position"
-                value={position}
-                onChange={(e) => setPosition(e.target.value)}
+                value={workValues.position}
+                onChange={(e) => handleValueUpdate("position", e.target.value)}
             />
 
             <InputField
                 label="Company"
                 placeholder="Enter company name"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
+                value={workValues.company}
+                onChange={(e) => handleValueUpdate("company", e.target.value)}
             />
 
             <InputField
                 label="Start Year"
                 placeholder="Enter start year"
-                value={startYear}
-                onChange={(e) => setStartYear(e.target.value)}
+                value={workValues.startYear}
+                onChange={(e) => handleValueUpdate("startYear", e.target.value)}
             />
 
             <InputField
                 label="End Year"
                 placeholder="Enter end year"
-                value={endYear}
-                onChange={(e) => setEndYear(e.target.value)}
+                value={workValues.endYear}
+                onChange={(e) => handleValueUpdate("endYear", e.target.value)}
             />
 
             <InputField
                 label="Responsibility"
                 placeholder="Enter responsibility"
-                value={responsibility}
-                onChange={(e) => setResponsibility(e.target.value)}
+                value={workValues.responsibility}
+                onChange={(e) => handleValueUpdate("responsibility", e.target.value)}
             />
 
 
@@ -70,7 +62,7 @@ const WorkInput = ({
                     <Button value="Cancel" handleClick={() => setExperience(!addExperience)} />
                     <Button
                         value="Submit"
-                        handleClick={() => submitWork(position, company, startYear, endYear, responsibility)}
+                        handleClick={() => submitWork(workValues)}
                     />
                 </Styled.ButtonWrapper>
             </Styled.ButtonContainer>

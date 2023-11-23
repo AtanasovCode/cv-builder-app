@@ -21,20 +21,42 @@ const WorkExperience = ({
     updateWork,
 }) => {
 
-    const [position, setPosition] = useState("");
-    const [company, setCompany] = useState("");
-    const [startYear, setStartYear] = useState("");
-    const [endYear, setEndYear] = useState("");
-    const [responsibility, setResponsibility] = useState("");
+    const [workValues, setWorkValues] = useState({
+        position: "",
+        company: "",
+        startYear: "",
+        endYear: "",
+        responsibility: ""
+    })
+
+    const handleValueUpdate = (field, value) => {
+        setWorkValues({
+            ...workValues,
+            [field]: value
+        })
+    }
 
     // Function to set values based on the selected experience
     const setSelectedExperience = (data) => {
-        setPosition(data.position);
-        setCompany(data.company);
-        setStartYear(data.startYear);
-        setEndYear(data.endYear);
-        setResponsibility(data.responsibility);
+        setWorkValues({
+            ...workValues,
+            position: data.position,
+            company: data.company,
+            startYear: data.startYear,
+            endYear: data.endYear,
+            responsibility: data.responsibility
+        })
     };
+
+    const clearWorkValues = () => {
+        setWorkValues({
+            position: "",
+            company: "",
+            startYear: "",
+            endYear: "",
+            responsibility: ""
+        })
+    }
 
 
     return (
@@ -45,6 +67,7 @@ const WorkExperience = ({
                 currentTheme={currentTheme}
                 addExperience={addWorkExperience}
                 setExperience={setAddWorkExperience}
+                clearValues={clearWorkValues}
             />
 
             <Styled.AddedExperienceContainer>
@@ -74,16 +97,7 @@ const WorkExperience = ({
                                         showWork && data.id === selectedID && (
                                             <Styled.InputContainer>
                                                 <WorkInput
-                                                    position={position}
-                                                    setPosition={setPosition}
-                                                    company={company}
-                                                    setCompany={setCompany}
-                                                    startYear={startYear}
-                                                    setStartYear={setStartYear}
-                                                    endYear={endYear}
-                                                    setEndYear={setEndYear}
-                                                    responsibility={responsibility}
-                                                    setResponsibility={setResponsibility}
+                                                    workValues={workValues}
                                                     setExperience={setShowWork}
                                                     addExperience={showWork}
                                                     submitWork={updateWork}
@@ -101,24 +115,10 @@ const WorkExperience = ({
             {
                 addWorkExperience &&
                 <WorkInput
-                    position={position}
-                    setPosition={setPosition}
-
-                    company={company}
-                    setCompany={setCompany}
-
-                    startYear={startYear}
-                    setStartYear={setStartYear}
-
-                    endYear={endYear}
-                    setEndYear={setEndYear}
-
-                    responsibility={responsibility}
-                    setResponsibility={setResponsibility}
-
+                    workValues={workValues}
+                    handleValueUpdate={handleValueUpdate}
                     setExperience={setAddWorkExperience}
                     addExperience={addWorkExperience}
-
                     submitWork={submitWork}
                 />
             }

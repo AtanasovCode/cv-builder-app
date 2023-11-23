@@ -8,6 +8,7 @@ const Heading = ({
     currentTheme,
     addExperience,
     setExperience,
+    clearValues,
 }) => {
 
     return (
@@ -26,6 +27,7 @@ const Heading = ({
                         theme={currentTheme}
                         $active={addExperience}
                         onClick={() => {
+                            clearValues() //clears previously set values
                             !addExperience && setExperience(!addExperience)
                         }} 
                     />
