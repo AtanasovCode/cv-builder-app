@@ -1,71 +1,64 @@
-
-//importing similar styles for all input components
+import { useState } from 'react';
 import * as Styled from '../../styles/InputStyles';
-
-import InputField from './InputField';
 
 import Button from './Button';
 
-import { useState } from 'react';
+import InputField from './InputField';
 
 const EducationInput = ({
+    educationValues,
+    handleValueUpdate,
+
     addExperience,
     setExperience,
+
     submitEducation,
+    deleteExperience,
 }) => {
-
-
-
-    const [institution, setInstitution] = useState("");
-    const [degree, setDegree] = useState("");
-    const [start, setStart] = useState("");
-    const [graduation, setGraduation] = useState("");
-
-
     return (
-
-        <Styled.Category >
-
+        <Styled.Category>
             <InputField
-                label="Institution Name"
-                placeholder="Emter institution name"
-                value={institution}
-                onChange={(e) => setInstitution(e.target.value)}
+                label="Institution"
+                placeholder="Enter institution"
+                value={educationValues.institution}
+                onChange={(e) => handleValueUpdate("institution", e.target.value)}
             />
 
             <InputField
                 label="Degree"
-                placeholder="Enter your degree"
-                value={degree}
-                onChange={(e) => setDegree(e.target.value)}
+                placeholder="Enter degree"
+                value={educationValues.degree}
+                onChange={(e) => handleValueUpdate("degree", e.target.value)}
             />
 
             <InputField
                 label="Start Year"
                 placeholder="Enter start year"
-                value={start}
-                onChange={(e) => setStart(e.target.value)}
+                value={educationValues.start}
+                onChange={(e) => handleValueUpdate("start", e.target.value)}
             />
 
             <InputField
                 label="Graduation"
                 placeholder="Enter graduation year"
-                value={graduation}
-                onChange={(e) => setGraduation(e.target.value)}
+                value={educationValues.graduation}
+                onChange={(e) => handleValueUpdate("graduation", e.target.value)}
             />
 
             <Styled.ButtonContainer>
                 <Styled.ButtonWrapper>
-                    <Button value="Delete" />
+                    <Button value="Delete" handleClick={() => deleteExperience("education")} />
                 </Styled.ButtonWrapper>
 
                 <Styled.ButtonWrapper>
                     <Button value="Cancel" handleClick={() => setExperience(!addExperience)} />
-                    <Button value="Submit" handleClick={() => submitEducation(institution, degree, start, graduation)} />
+                    <Button
+                        value="Submit"
+                        handleClick={() => submitEducation(educationValues)}
+                    />
                 </Styled.ButtonWrapper>
             </Styled.ButtonContainer>
-
-        </Styled.Category >
+        </Styled.Category>
     );
 }
 

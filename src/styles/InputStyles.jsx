@@ -29,6 +29,15 @@ export const Experience = styled.div`
     justify-content: space-between;
     font-size: 20px;
     font-weight: 700;
+    overflow: hidden;
+    width: 100%;
+`;
+
+export const ExperienceName = styled.div`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: .5rem;
 `;
 
 export const ExpandIcon = styled.img`

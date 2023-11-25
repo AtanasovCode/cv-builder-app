@@ -50,13 +50,14 @@ const Editor = ({
         });
     };
 
-    const submitEducation = (institution, degree, start, graduation) => {
+    //creates new object with new education experience
+    const submitEducation = (data) => {
         const updatedEducation = {
             id: uuidv4(),
-            institution,
-            degree,
-            start,
-            graduation
+            institution: data.institution,
+            degree: data.degree,
+            start: data.start,
+            graduation: data.graduation
         }
 
         setCvData((prevCVData) => ({
@@ -65,9 +66,37 @@ const Editor = ({
         }));
 
         //close inputs after adding new data
-        handleAddExperience()
+        setAddEducationExperience(!addEducationExperience);
     }
 
+    const updateEducation = (data) => {
+        // Identify the index of the selected work experience
+        const experienceIndex = cvData.education.findIndex((exp) => exp.id === selectedID);
+
+        // Create a new work experience object with the updated values
+        const updatedExperience = {
+            id: selectedID,
+            institution: data.institution,
+            degree: data.degree,
+            start: data.start,
+            graduation: data.graduation,
+        };
+
+        if (experienceIndex !== -1) {
+            // If the selectedID is found, update the existing work experience
+            const updatedEducationExperience = [...cvData.education];
+            updatedEducationExperience[experienceIndex] = updatedExperience;
+
+            // Update cvData with the modified work experience array
+            setCvData({ ...cvData, education: updatedEducationExperience });
+        }
+
+        //close inputs after updating experience data
+        setShowEducation(!showEducation);
+    };
+
+
+    //creates new object with new work experience
     const submitWork = (data) => {
         const updatedWork = {
             id: uuidv4(),
@@ -167,11 +196,15 @@ const Editor = ({
                 <EducationExperience
                     cvData={cvData}
                     currentTheme={currentTheme}
-                    addEducationExperience={addEducationExperience}
-                    setAddEducationExperience={setAddEducationExperience}
                     submitEducation={submitEducation}
+                    updateEducation={updateEducation}
+                    deleteExperience={deleteExperience}
                     selectedID={selectedID}
                     setSelectedID={setSelectedID}
+                    showEducation={showEducation}
+                    setShowEducation={setShowEducation}
+                    addEducationExperience={addEducationExperience}
+                    setAddEducationExperience={setAddEducationExperience}
                 />
 
                 <WorkExperience

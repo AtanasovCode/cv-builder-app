@@ -48,8 +48,8 @@ const CV = ({
 
             <ExperienceContainer>
                 {
-                    cvData.education.map((data, index) => (
-                        <div key={index}>
+                    cvData.education.map((data) => (
+                        <div key={data.id}>
                             <h2>{data.institution}</h2>
                             <h2>{data.degree}</h2>
                         </div>
