@@ -47,28 +47,51 @@ const CV = ({
             </PersonalInfoContainer>
 
             <ExperienceContainer>
-                {
-                    cvData.education.map((data) => (
-                        <div key={data.id}>
-                            <h2>{data.institution}</h2>
-                            <h2>{data.degree}</h2>
-                        </div>
-                    ))
-                }
+                <Experience>
+                    <ExperienceCategory>
+                        Education
+                    </ExperienceCategory>
 
-            </ExperienceContainer>
+                    {
+                        cvData.education.map((data) => (
+                            <AddedExperience key={data.id}>
+                                <YearContainer>
+                                    {data.start} - {data.graduation}
+                                </YearContainer>
+                                <InfoContainer>
+                                    <ExperienceName>
+                                        {data.institution}
+                                    </ExperienceName>
+                                    <ExperienceWrapper>
+                                        <ExperienceLabel>
+                                            Degree:
+                                        </ExperienceLabel>
+                                        <ExperienceTitle>
+                                            {data.degree}
+                                        </ExperienceTitle>
+                                    </ExperienceWrapper>
+                                    <ExperienceWrapper>
+                                        <ExperienceLabel>
+                                            Start:
+                                        </ExperienceLabel>
+                                        <ExperienceInfo>
+                                            {data.start}
+                                        </ExperienceInfo>
+                                    </ExperienceWrapper>
+                                    <ExperienceWrapper>
+                                        <ExperienceLabel>
+                                            Graduation:
+                                        </ExperienceLabel>
+                                        <ExperienceInfo>
+                                            {data.graduation}
+                                        </ExperienceInfo>
+                                    </ExperienceWrapper>
+                                </InfoContainer>
+                            </AddedExperience>
+                        ))
+                    }
 
-            <ExperienceContainer>
-                {
-                    cvData.workExperience.map((work) => {
-                        return (
-                            <div key={work.id}>
-                                <h2> {work.company} </h2>
-                                <h2> {work.position} </h2>
-                            </div>
-                        );
-                    })
-                }
+                </Experience>
             </ExperienceContainer>
         </Paper>
     )
@@ -130,7 +153,7 @@ const Name = styled.div`
 const Mail = styled.div`
     font-size: 16px;
     font-weight: 400;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -150,5 +173,54 @@ const ExperienceContainer = styled.div`
     flex-direction: column;
     height: 100%;
     width: 100%;
+    padding: 2rem;
 `;
 
+const Experience = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const ExperienceCategory = styled.div` 
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+`;
+
+const AddedExperience = styled.div`
+    display: flex;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+`;
+
+const YearContainer = styled.div`
+    margin-right: 1.5rem;
+`;
+
+const InfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const ExperienceName = styled.div`
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: .5rem;
+`;
+
+const ExperienceWrapper = styled.div`
+    display: flex;
+    margin-bottom: .5rem;
+    font-size: 17px;
+`;
+
+const ExperienceLabel = styled.div`
+    margin-right: .5rem;
+`;
+
+const ExperienceInfo = styled.div`
+`;
+
+const ExperienceTitle = styled(ExperienceInfo)`
+    font-weight: 700;
+`;

@@ -85,7 +85,9 @@ const WorkExperience = ({
                                             setSelectedExperience(data); // Set values for selected experience
                                         }}
                                     >
-                                        {data.company}
+                                        <Styled.ExperienceName>
+                                            {data.company}
+                                        </Styled.ExperienceName>
 
                                         <Styled.ExpandIcon
                                             src={expandIcon}
