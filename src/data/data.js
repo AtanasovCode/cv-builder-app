@@ -25,7 +25,7 @@ export const initialCVData = {
             company: "Caltech",
             startYear: "2003",
             endYear: "Present",
-            responsibilities: "Conducting groundbreaking research in theoretical physics",
+            responsibility: "Conducting groundbreaking research in theoretical physics",
         },
         // Add more work experience entries as needed
     ],

@@ -171,11 +171,7 @@ const Editor = ({
 
 
     return (
-        <Container
-            onMouseEnter={() => window.addEventListener('wheel', handleScroll)}
-            onMouseLeave={() => window.removeEventListener('wheel', handleScroll)}
-            ref={targetRef}
-        >
+        <Container>
             <Nav toggleTheme={toggleTheme} currentTheme={currentTheme} />
 
             <InputContainer>
@@ -228,9 +224,7 @@ const Editor = ({
 export default Editor;
 
 const Container = styled.div`
-    flex: 45%;
-    height: 100vh;
-    overflow: hidden;
+    flex: 30%;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
     border-right: 1px solid ${props => props.theme.accent};

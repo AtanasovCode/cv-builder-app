@@ -12,7 +12,7 @@ export const initialLightTheme = {
 
 export const initialDarkTheme = {
     text: "#fbfdfe",
-    background: "#052840",
+    background: "#0e0f10",
     primary: "#1f30ca",
     secondary: "#b78bff",
     accent: "#7315fe",
