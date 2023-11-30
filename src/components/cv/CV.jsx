@@ -4,11 +4,14 @@ import styled from "styled-components";
 import ExperienceDisplay from "./ExperienceDisplay";
 
 //importing icons
+import menu from '../../assets/menu.svg';
+import close from '../../assets/close.svg';
 import number from '../../assets/phone.svg';
 import mail from '../../assets/mail.svg';
 import locationIcon from '../../assets/location.svg';
 
 const CV = ({
+    setShowEditor,
     cvData,
     cvLayout,
 }) => {
@@ -19,6 +22,9 @@ const CV = ({
         <Paper
             $layout={cvLayout}
         >
+
+            <MenuIcon src={menu} />
+
             <PersonalInfoContainer $layout={cvLayout}>
                 <Profession>
                     {profession}
@@ -90,25 +96,35 @@ const CV = ({
 export default CV;
 
 const Paper = styled.div`
-    flex: 70%;
+    flex: 100%;
     background-color: #fff;
     color: #000;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     margin: 1.5rem 3rem;
+    height: 100%;
+    overflow-y: auto;
+    position: sticky;
+    top: 1.5rem;
 
     ${props => props.$layout === "top" && `
         flex-direction: column;
     `}
 
     ${props => props.$layout === "left" && `
-            flex-direction: row;
-        `}
+        flex-direction: row;
+    `}
 
     ${props => props.$layout === "right" && `
-            flex-direction: row-reverse;
-        `}
+        flex-direction: row-reverse;
+    `}
+
+    @media (max-width: 1024px) {
+        position: relative;
+        top: auto;
+        margin: 3.5rem 2rem 2rem 2rem;
+    }
 `;
 
 const PersonalInfoContainer = styled.div`
@@ -123,6 +139,13 @@ const PersonalInfoContainer = styled.div`
         height: 100%;
         width: 40%;
     ` : `height: auto`}
+`;
+
+const MenuIcon = styled.img`
+    position: absolute;
+    top: -5%;
+    left: 10%;
+    width: 2.5rem;
 `;
 
 const Profession = styled.div`

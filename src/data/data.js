@@ -30,3 +30,9 @@ export const initialCVData = {
         // Add more work experience entries as needed
     ],
 };
+
+export const emptyCVData = {
+    personalInfo: {},
+    education: [],
+    workExperience: [],
+};

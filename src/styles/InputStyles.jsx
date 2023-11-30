@@ -18,7 +18,7 @@ export const ExperienceWrapper = styled.div`
     border: 1px solid #ddd;
     margin-bottom: 1rem;
     padding: .8rem 1rem;
-    border-radius: 6px;
+    border-radius: 8px;
 `;
 
 export const Experience = styled.div`
@@ -29,8 +29,6 @@ export const Experience = styled.div`
     justify-content: space-between;
     font-size: 20px;
     font-weight: 700;
-    overflow: hidden;
-    width: 100%;
 `;
 
 export const ExperienceName = styled.div`

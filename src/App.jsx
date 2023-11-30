@@ -12,6 +12,8 @@ import { initialCVData } from './data/data';
 
 function App() {
 
+  const [showEditor, setShowEditor] = useState(false);
+
   const [cvData, setCvData] = useState(initialCVData);
   const [currentTheme, setCurrentTheme] = useState("dark");
   const [lightTheme, setLightTheme] = useState(initialLightTheme);
@@ -62,6 +64,8 @@ function App() {
       <Container>
         <GlobalStyle />
         <Editor
+          showEditor={showEditor}
+          setShowEditor={setShowEditor}
           toggleTheme={toggleTheme}
           currentTheme={currentTheme}
           cvData={cvData}
@@ -69,7 +73,10 @@ function App() {
           handleThemeValueChange={handleThemeValueChange}
           setCvLayout={setCvLayout}
         />
+
         <CV
+          showEditor={showEditor}
+          setShowEditor={setShowEditor}
           cvData={cvData}
           cvLayout={cvLayout}
         />
@@ -84,5 +91,6 @@ export default App
 const Container = styled.div`
   display: flex;
   min-height: 100vh;
+  width: 100%;
   background-color: #cbcbcb;
 `;

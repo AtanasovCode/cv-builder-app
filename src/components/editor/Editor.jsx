@@ -1,8 +1,7 @@
-import { useRef, useState } from "react";
-
-import useSmoothScroll from '../hooks/useSmoothScroll';
+import { useState } from "react";
 
 import { v4 as uuidv4 } from 'uuid';
+import { initialCVData, emptyCVData } from "../../data/data";
 
 import styled from "styled-components";
 
@@ -15,6 +14,7 @@ import ColorChange from "./ColorChange";
 import LayoutChange from "./LayoutChange";
 
 const Editor = ({
+    showEditor,
     toggleTheme,
     currentTheme,
     handleThemeValueChange,
@@ -22,9 +22,6 @@ const Editor = ({
     setCvData,
     setCvLayout,
 }) => {
-
-    //used for smooth scrolling with custom hook
-    const { targetRef, handleScroll } = useSmoothScroll();
 
     //values used to display/hide inputs for education experience
     const [addEducationExperience, setAddEducationExperience] = useState(false);
@@ -37,6 +34,14 @@ const Editor = ({
     //values used for displaying already added experience
     const [showEducation, setShowEducation] = useState(false);
     const [showWork, setShowWork] = useState(false);
+
+    const clearExample = () => {
+        setCvData(emptyCVData)
+    };
+
+    const loadExample = () => {
+        setCvData(initialCVData);
+    }
 
 
 
@@ -174,6 +179,20 @@ const Editor = ({
         <Container>
             <Nav toggleTheme={toggleTheme} currentTheme={currentTheme} />
 
+            <ExampleButtons>
+                <ClearButton
+                    type="button"
+                    value="Clear Example"
+                    onClick={() => clearExample()}
+                />
+
+                <LoadButton
+                    type="button"
+                    value="Load Example"
+                    onClick={() => loadExample()}
+                />
+            </ExampleButtons>
+
             <InputContainer>
 
                 <LayoutChange currentTheme={currentTheme} setCvLayout={setCvLayout} />
@@ -224,11 +243,15 @@ const Editor = ({
 export default Editor;
 
 const Container = styled.div`
-    flex: 30%;
+    width: 30%;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.text};
     border-right: 1px solid ${props => props.theme.accent};
     transition: background .5s ease;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
 `;
 
 const InputContainer = styled.div`
@@ -237,5 +260,31 @@ const InputContainer = styled.div`
     align-items: stretch;
     justify-content: flex-start;
     padding: 2rem;
-    overflow: auto;
+`;
+
+const ExampleButtons = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 2rem;
+`;
+
+const Button = styled.input`
+    padding: .5rem 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+`;
+
+const LoadButton = styled(Button)`
+    background-color: ${props => props.theme.accent};
+    color: #fff;
+`;
+
+const ClearButton = styled(Button)`
+    background-color: transparent;
+    border: 1px solid ${props => props.theme.accent};
+    color: ${props => props.theme.text};
+    margin-right: 1.5rem;
 `;
